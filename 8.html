@@ -1,0 +1,43 @@
+<html>
+<head>
+<style>
+.inline{
+	display: inline-block;
+}
+.buttonArea{
+	vertical-align: top;
+}
+</style>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="BM.js"></script>
+<script src="BMs.js"></script>
+<script src="util.js"></script>
+</head>
+<body>
+	<div class='inline'>
+		<svg></svg>
+	</div>
+	<div class='inline buttonArea'>
+		<button id='start'>start</button>
+		<button id='stop'>stop</button>
+		<button id='sample'>sample</button>
+		<button id='step'>step</button>
+	</div>
+</body>
+<script>
+var visibleNodes = [
+ {id:'v1',biasWeight:0,state:0},
+ {id:'v2',biasWeight:0,state:0}
+]
+var hiddenNodes = [
+ {id:'h1',biasWeight:0,state:0}
+]
+var edges = [
+ {nodes:['v1','h1'],weight:-2},
+ {nodes:['v2','h1'],weight:2}	
+]
+bms = new BMs(visibleNodes,hiddenNodes,edges,10000);
+bms.run();
+var frequency = bms.sample();
+</script>
+</html>

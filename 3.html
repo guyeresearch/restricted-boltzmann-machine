@@ -1,0 +1,46 @@
+<html>
+<head>
+<style>
+.inline{
+	display: inline-block;
+}
+.buttonArea{
+	vertical-align: top;
+}
+</style>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="BM.js"></script>
+<script src="util.js"></script>
+</head>
+<body>
+	<div class='inline'>
+		<svg></svg>
+	</div>
+	<div class='inline buttonArea'>
+		<button id='start'>start</button>
+		<button id='stop'>stop</button>
+		<button id='sample'>sample</button>
+	</div>
+</body>
+<script>
+visibleNodes = [
+ {id:'v1',biasWeight:-2,state:1},
+ {id:'v2',biasWeight:2,state:0}
+]
+var svg = d3.select('svg')
+		.attr('width',500).attr('height',800);
+var g= svg.append('g')
+	.attr('transform','translate(200,20)');
+var bm = new BM(g,visibleNodes,[],[],true);
+d3.select('#start').on('click',function(event){
+	bm.start();
+});
+d3.select('#stop').on('click',function(event){
+	bm.stop();
+});
+var sampler = new Sampler(svg,bm,15,150);
+d3.select('#sample').on('click',function(event){
+	sampler.sample();
+});
+</script>
+</html>

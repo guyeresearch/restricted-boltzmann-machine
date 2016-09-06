@@ -1,0 +1,9 @@
+
+{
+  "name": "RBM",
+  "description": "RBM animations",
+  "version": "0.0.1",
+  "dependencies": {
+    "d3":"4.2.2"
+  }
+}
